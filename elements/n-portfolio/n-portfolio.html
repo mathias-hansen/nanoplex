@@ -1,0 +1,32 @@
+<dom-module is="n-portfolio">
+
+	<link rel="import" type="css" href="n-portfolio.css" />
+
+	<template>
+
+		<h2>{{name}}</h2>
+
+		<section class="layout horizontal">
+
+			<article id="images">
+				<content select="img"></content>
+			</article>
+
+			<article id="content" class="layout vertical start">
+				<content></content>
+				<a class="self-end" href="{{link}}">go to website</a>
+			</article>
+			
+		</section>
+
+	</template>
+</dom-module>
+<script>
+	Polymer({
+		is: "n-portfolio",
+		properties: {
+			name: String,
+			link: String
+		}
+	})
+</script>

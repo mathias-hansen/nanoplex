@@ -1,0 +1,19 @@
+{
+  "name": "nanoplex",
+  "version": "0.0.1",
+  "authors": [
+    "Mathias Hansen <mathias.hansen783@gmail.com>"
+  ],
+  "description": "nanoplex",
+  "keywords": [
+    "nanoplex"
+  ],
+  "license": "MIT",
+  "homepage": "nanoplex.dk",
+  "dependencies": {
+    "polymer": "polymer/polymer#~0.8.0",
+    "layout": "polymer/layout#0.8-preview",
+    "core-ajax": "polymer/core-ajax#0.8-preview",
+    "paper-spinner": "polymer/paper-spinner#0.8-preview"
+  }
+}

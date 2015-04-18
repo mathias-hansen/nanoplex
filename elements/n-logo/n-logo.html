@@ -1,0 +1,34 @@
+<link rel="import" href="/bower_components/polymer/polymer.html" />
+
+<dom-module is="n-logo">
+	<style>
+		:host {
+			padding: .5em 0;
+			display: block;
+			cursor: pointer;
+		}
+
+		p {
+			background-color: #2196F3;
+			color: white;
+			display: inline;
+			padding: 1em;
+			font-size: 1.5em;
+			border-radius: 50%;
+		}
+	</style>
+	<template>
+		<p>np</p>
+	</template>
+</dom-module>
+<script>
+	Polymer({
+		is: "n-logo",
+		listeners: {
+			"tap": "home"
+		},
+		home: function(){
+			window.location.hash = "#/home";
+		}
+	})
+</script>

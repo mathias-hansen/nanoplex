@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>nanoplex</title>
+
+	<link rel='stylesheet' 
+		  type='text/css'
+		  href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700'>
+
+	<link rel="import" 
+		  href="imports.html" />
+
+	<link rel="stylesheet" 
+		  type="text/css" 
+		  href="styles.css">
+
+</head>
+<body>
+	<header class="layout horizontal center">
+
+		<n-logo class="flex"></n-logo>
+
+		<ul class="layout horizontal center">
+
+			<li><a href="/#/home">home</a></li>
+
+			<li><a href="/#/portfolio">portfolio</a></li>
+
+			<li><a href="/#/projects">projects</a></li>
+			
+		</ul>
+
+	</header>
+
+	<section id="views">
+
+		<article view="loading" 
+				 class="layout horizontal center">
+
+			<paper-spinner active></paper-spinner>
+			
+		</article>
+
+		<article hidden
+				 view="not-found" 
+				 class="layout horizontal center" >
+
+			<p>this page does not exist</p>
+
+		</article>
+
+		<article hidden
+				 view="page" 
+				 class="layout horizontal wrap" >
+		</article>
+
+	</section>
+	
+	<script async 
+			defer
+			src="/bower_components/webcomponentsjs/webcomponents.min.js" >
+	</script>
+
+	<script src="scripts.js"></script>
+</body>
+</html>

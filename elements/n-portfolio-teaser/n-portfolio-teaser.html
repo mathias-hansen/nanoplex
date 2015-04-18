@@ -1,0 +1,38 @@
+<dom-module is="n-portfolio-teaser">
+
+	<template>
+
+		<h2><a href="/#/portfolio">portfolio</a></h2>
+
+		<section id="latest" class="layout horizontal wrap">
+		</section>
+
+	</template>
+
+</dom-module>
+<script>
+	Polymer({
+		is: "n-portfolio-teaser",
+		ready: function () {
+			var ajax = document.createElement("core-ajax"),
+				that = this;
+
+			ajax.url = "/views/portfolio.html";
+			ajax.handleAs = "text";
+			ajax.generateRequest();
+
+			ajax.addEventListener("response", function(event) {
+				var content = document.createElement("div"),
+					views;
+
+				content.innerHTML = event.detail;
+
+				views = content.querySelectorAll("n-portfolio-view");
+
+				for (var i = 0; i < 3; i++) {
+					that.$.latest.innerHTML += views[i].outerHTML;
+				};
+			})
+		}
+	})
+</script>
