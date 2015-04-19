@@ -1,33 +1,33 @@
 :host {
-	width: 21vw;
-	height: 25vh;	
+	width: 29.645%;
+	height: 170px;
 	overflow: hidden;
 	position: relative;
-	border: 5px solid #e0e0e0;
+	border: 5px solid white;
 	margin: 0 1em 1em 0;
 	cursor: pointer;
 	outline: none;
 }
 
+:host:nth-child(3n) { margin-right: 0 }
+
 p {
 	padding: 1em;
-	background-color: #e0e0e0;
+	background-color: white;
 	position: absolute;
 	bottom: -67px;
 	transition: bottom .3s;
+	box-sizing: border-box;
 }
 
-:host:hover p, :host:focus p {
-	bottom: -16px;
-}
+:host:hover p, :host:focus p { bottom: -16px }
 
-::content img, p {
-	width: 100%;
-}
+::content img, p { width: 100% }
 
 @media (max-width: 800px) {
 	:host {
 		width: 100%;
-		height: 40vh;
+		height: 300px;
+		margin-right: 0;
 	}
 }
