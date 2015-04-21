@@ -27,6 +27,16 @@
 		properties: {
 			name: String,
 			link: String
+		},
+		ready: function(){
+			var images = document.querySelectorAll("img");
+
+			for (var i = 0; i < images.length; i++) {
+				this.listen(images[i], "tap","show");
+			};
+		},
+		show: function (event){
+			window.location.href = event.target.src;
 		}
 	})
 </script>

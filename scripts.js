@@ -1,22 +1,8 @@
 (function () {
     "use strict";
 
-    function changeView(hash) {
-        var view = hash.replace(/^#\//, "");
-
-        document.querySelector("title").innerHTML = "nanoplex - " + view.replace(/-/g," ");
-
-        getView(view);
-    };
-
-    function getView(view) {
-        var ajax = document.createElement("core-ajax"),
-            views = document.querySelector("#views").querySelectorAll("article"),
-            loading = views[0],
-            page = views[1];
-
-        page.setAttribute("hidden", "");
-        loading.removeAttribute("hidden");
+    function getView(view, callback) {
+        var ajax = document.createElement("core-ajax");
 
         ajax.url = "/views/" + view + ".html";
         ajax.handleAs = "text";
@@ -24,14 +10,32 @@
 
         ajax.addEventListener("response", function(event) {
             var response = event.detail;
-
-            loading.setAttribute("hidden", "");
-            page.removeAttribute("hidden");
             
-            if (response === "Not found\n") 
-                getView("missing");
-            else 
-                page.innerHTML = response;
+            if (response === "Not found\n") {
+                getView("missing", function (res){
+                    callback(res);
+                });
+            } else 
+                callback(response);
+        });
+    };
+
+    function changeView(hash) {
+        var view = hash.replace(/^#\//, ""),
+            views = document.querySelector("#views").querySelectorAll("article"),
+            loading = views[0],
+            page = views[1];
+
+        page.setAttribute("hidden", "");
+        loading.removeAttribute("hidden");
+
+        document.querySelector("title").innerHTML = "nanoplex - " + view.replace(/-/g," ");
+
+        getView(view, function (response) {
+            page.removeAttribute("hidden");
+            loading.setAttribute("hidden", "");
+
+            page.innerHTML = response;
         });
     };
 
