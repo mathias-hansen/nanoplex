@@ -4,7 +4,17 @@
 
 	<template>
 
-		<h2>{{name}}</h2>
+		<section class="layout horizontal justified">
+			<h2>[[name]]</h2>
+
+			<article class="layout horizontal center">
+				<p>[[month]]</p> 
+				<p>/</p> 
+				<p>[[year]]</p>
+			</article>
+
+		</section>
+		
 
 		<section class="layout horizontal">
 
@@ -13,8 +23,22 @@
 			</article>
 
 			<article id="content" class="layout vertical start">
+
 				<content></content>
-				<a class="self-end" href="{{link}}">go to website</a>
+
+				<section class="links layout horizontal end">
+
+					<a class="github layout horizontal center" href="[[githubLink]]">
+						<img src="/github.svg" />
+						<p>gå til github</p>
+					</a>
+					<a class="page layout horizontal center" href="[[link]]">
+						<img src="/file.svg" />
+						<p>gå til siden</p>
+					</a>
+
+				</section>
+
 			</article>
 			
 		</section>
@@ -26,14 +50,26 @@
 		is: "n-portfolio",
 		properties: {
 			name: String,
-			link: String
+			link: String,
+			month: String,
+			year: String,
+			githublink: {
+				type: String,
+				value: undefined,
+				notify: false
+			}
 		},
-		ready: function(){
+		attached: function () {
 			var images = document.querySelectorAll("img");
 
 			for (var i = 0; i < images.length; i++) {
 				this.listen(images[i], "tap","show");
 			};
+
+			console.log({"object": this});
+
+			if (this.githublink == undefined)
+				document.querySelector(".github").hidden = true;
 		},
 		show: function (event){
 			window.location.href = event.target.src;

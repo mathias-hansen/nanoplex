@@ -1,18 +1,47 @@
+.links {
+	width: 100%;
+}
+
 a {
 	padding: .5em;
 	margin: .5em 0;
 	color: white;
 	text-decoration: none;
 	border-radius: 1px;
-	background-color: #2196F3;
-	border-bottom: 5px solid #1976D2; 
+	border-bottom: 5px solid;
 	transition: border-width .3s, padding-bottom .3s;
 }
+
 a:focus, a:hover {
 	color: white;
 	outline: none;
 	border-width: 0;
 	padding-bottom: 13px;
+}
+
+a img {
+	width: 24px;
+	height: 24px;
+	margin: 0 .5em 0 0;
+}
+
+a p {
+	margin: 0;
+}
+
+a.github {
+	background-color: #616161;
+	border-color: #212121; 
+	margin-right: 2em;
+}
+
+a.page {
+	background-color: #2196F3;
+	border-color: #1976D2; 
+}
+
+:host section:first-child article p:nth-child(2) {
+	margin: 0 .5em;
 }
 
 ::content img {
@@ -24,7 +53,6 @@ a:focus, a:hover {
 	height: 100%;
 	padding: 1em;
 	box-sizing: border-box;
-	background-color: white;
 }
 
 #images {
