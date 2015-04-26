@@ -2,16 +2,14 @@
     "use strict";
 
     function getView(view, callback) {
-        var ajax = document.createElement("core-ajax");
+        var xhr = document.createElement("core-request");
 
-        ajax.url = "/views/" + view + ".html";
-        ajax.handleAs = "text";
-        ajax.generateRequest();
+        xhr.send({
+            url: "/views/" + view + ".html"
+        });
 
-        ajax.addEventListener("response", function(event) {
-            var response = event.detail;
-            
-            if (response === "Not found\n") {
+        xhr.completes.then(function(response) {
+            if (response.match("<head>\s*\n\s*<title>Error response</title>") !== null) {
                 getView("missing", function (res){
                     callback(res);
                 });
@@ -44,7 +42,7 @@
     };
     
     if (!window.location.hash) 
-        window.location.href = "#/home";
+        window.location.href = "#/portfolio";
     else 
         changeView(window.location.hash);
 

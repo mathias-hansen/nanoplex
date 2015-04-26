@@ -3,15 +3,14 @@
 	<link rel="import" type="css" href="n-portfolio-view.css" />
 
 	<template>
+			<p>[[name]]</p>
 
-		<p>{{name}}</p>
-
-		<content select="img"></content>
-
+			<content select="img"></content>
 	</template>
 	
 </dom-module>
 <script>
+
 	Polymer({
 		is: "n-portfolio-view",
 		properties: {
@@ -26,7 +25,7 @@
 		keyPresses: {
 			13: "portfolio"
 		},
-		portfolio: function() {
+		portfolio: function () {
 			window.location.hash = "#/portfolio/" + this.name.replace(/\s/g, "-");
 		}
 	})

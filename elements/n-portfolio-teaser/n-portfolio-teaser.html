@@ -14,23 +14,23 @@
 	Polymer({
 		is: "n-portfolio-teaser",
 		ready: function () {
-			var ajax = document.createElement("core-ajax"),
-				that = this;
+			var xhr = document.createElement("core-request"),
+				latest = this.$.latest;
 
-			ajax.url = "/views/portfolio.html";
-			ajax.handleAs = "text";
-			ajax.generateRequest();
+			xhr.send({
+				url: "/views/portfolio.html"
+			});
 
-			ajax.addEventListener("response", function(event) {
+			xhr.completes.then(function(response) {
 				var content = document.createElement("div"),
 					views;
 
-				content.innerHTML = event.detail;
+				content.innerHTML = response;
 
 				views = content.querySelectorAll("n-portfolio-view");
 
 				for (var i = 0; i < 3; i++) {
-					that.$.latest.innerHTML += views[i].outerHTML;
+					latest.innerHTML += views[i].outerHTML;
 				};
 			});
 		}
